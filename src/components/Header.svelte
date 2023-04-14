@@ -3,10 +3,6 @@
 		<div class="title">
 			<h2>Where in the World?</h2>
 		</div>
-		<div class="darkMode">
-			<span><i class="fa-regular fa-moon" /></span>
-			<button type="button" style="all:unset"> Dark Mode </button>
-		</div>
 	</div>
 </header>
 
@@ -16,6 +12,9 @@
 		height: 15vh;
 		background-color: white;
         border-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 	}
     .container{
         display: flex;
@@ -24,15 +23,10 @@
         height: 100%;
         padding: 0rem 3rem;
     }
-    .darkMode{
-        display: flex;
-        gap: 1rem;
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
+
     .title{
+        text-align: center;
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size:2vmax;
     }
 </style>

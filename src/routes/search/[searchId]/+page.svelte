@@ -1,100 +1,73 @@
 <script>
+	import CountryCard from '../../../components/CountryCard.svelte';
 	import Header from '../../../components/Header.svelte';
 	export let data;
 	const props = data.props;
 </script>
 
 <Header />
-
-<main>
-    <section>
-		<div class="back">
-			<span><a href="/">Back</a></span>
-		</div>
+<section>
+	<div class="container">
 		{#each props as country}
-
-		<div class="img">
-			<img src={country.flags.png} alt="">
-		</div>
-
-		<div>
-			<div class="texts">
-					<div class="left">
-						<p><b>Native name: </b>{country.name.official} </p>
-						<p><b>Population: </b>{country.population} </p>
-						<p><b>Region: </b> {country.region}</p>
-						<p><b>Sub Region:</b> {country.subregion}</p>
-						<p><b>Capital:</b> {country.capital}</p>
-						<div class="border">Border Countries:
-							<span>{country.borders}</span> 
-						</div>
-					</div>
-					<div class="right">
-					<p><b>Top level domain:</b> {country.tld}</p>
-					<p><b>Continents:</b> {country.continents
-					}</p>
-					<p><b>Languages:</b> {Object.values(country.languages).toString()}</p>
+			<div class="card-container">
+				<div class="img-container">
+					<a svletekit:prefetch href={'/country/' + country.name.common}>
+						<img src={country.flags.png} alt={country.name} />
+					</a>
+				</div>
+				<div class="text-container">
+					<h2>{country.name.common}</h2>
+					<p><b>Population:</b> {country.population}</p>
+					<p><b>Region:</b> {country.region}</p>
+					<p><b>Capital:</b> {country.capital}</p>
 				</div>
 			</div>
-		</div>
 		{/each}
-    </section>
-</main> 
+	</div>
+</section>
+
 <style>
-	main {
+	section {
+		max-width: 1200px;
+		width: 90%;
+		margin-inline: auto;
+		margin-top: 2rem;
+		font-size:clamp(0.94rem, calc(0.92rem + 0.11vw), 1.00rem);
+	}
+	.container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 3rem;
+		justify-items: center;
+	}
+	.card-container {
+		border-radius: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		width: 100%;
+	}
+	.img-container {
+		width: 100%;
+		height: 100%;
+	}
+	.img-container > a > img {
 		height: 100%;
 		width: 100%;
-		background-color: #white;
-	}
-	section {
-		height: 90%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 3rem;
-	}
-	.back{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 5rem;
-		height: 5vh;
-		position: absolute;
-		bottom: 100px;
-		left: 50px;
-		border-radius: 0.5rem;
-		background-color: #ddd;
-		box-shadow: 0 0 8px #202020;
-	}
-	.img {
-		height: 50vh;
-		width: 30rem;
-	}
-	.img > img {
-		height: 100%;
-		max-width: 100%;
 		object-fit: cover;
 	}
-	.texts {
-		display: flex;
-		max-width: 30rem;
-		height: 50vh;
-		gap: 5rem;
+	.text-container {
+		background-color: rgb(233, 240, 248);	
+		width: 100%;
+		text-align: center;
+		border-bottom-left-radius:1rem ;
+		border-bottom-right-radius:1rem ;
 	}
-	a{
-		all:unset;
-		cursor: pointer
-		;
+
+	@media all and (min-width:1501px){
+		.text-container{
+			font-size: 1.4rem;
+		}
 	}
-	.border{
-		position: absolute;
-		bottom: 180px;
-	}
-	.border>span{
-		padding:0.5rem;
-		background-color:#ddd;
-		border-radius: 0.5rem;
-		font-weight: bold;
-	}
-	
 </style>

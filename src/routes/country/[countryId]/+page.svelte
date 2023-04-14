@@ -7,15 +7,10 @@
 <Header/>
 <main>
     <section>
-		<div class="back">
-			<span><a href="/">Back</a></span>
-		</div>
 		{#each props as country}
-
 		<div class="img">
-			<img src={country.flags.png} alt="">
+			<img src={country.flags.svg} alt="">
 		</div>
-
 		<div>
 			<div class="texts">
 					<div class="left">
@@ -24,8 +19,9 @@
 						<p><b>Region: </b> {country.region}</p>
 						<p><b>Sub Region:</b> {country.subregion}</p>
 						<p><b>Capital:</b> {country.capital}</p>
-						<div class="border">Border Countries:
-							<span>{country.borders}</span> 
+						<div class="border">
+							<b>Border Countries:</b>
+							<p class="borders">{country.borders}</p> 
 						</div>
 					</div>
 					<div class="right">
@@ -39,61 +35,53 @@
 		{/each}
     </section>
 </main> 
+
 <style>
-	main {
-		height: 100%;
-		width: 100%;
-		background-color: #white;
-	}
-	section {
-		height: 90%;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 3rem;
-	}
-	.back{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 5rem;
-		height: 5vh;
-		position: absolute;
-		bottom: 100px;
-		left: 50px;
-		border-radius: 0.5rem;
-		background-color: #ddd;
-		box-shadow: 0 0 8px #202020;
-	}
-	.img {
-		height: 50vh;
-		width: 30rem;
-	}
-	.img > img {
-		height: 100%;
-		max-width: 100%;
-		object-fit: cover;
-	}
-	.texts {
-		display: flex;
-		max-width: 30rem;
-		height: 50vh;
-		gap: 5rem;
-	}
-	a{
-		all:unset;
-		cursor: pointer
-		;
-	}
-	.border{
-		position: absolute;
-		bottom: 180px;
-	}
-	.border>span{
-		padding:0.5rem;
-		background-color:#ddd;
-		border-radius: 0.5rem;
-		font-weight: bold;
-	}
+section{
+	margin-top: 4rem;
+	width: 90%;
+	max-width: 1200px;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.img{
+	width: 100%;
+	height: 100%;
+}
+.img > img{
+	width: 100%;
+	height: 100%;
+}
+.texts{
+	padding: 1rem;
+	font-size: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+}
+.borders{
+	background-color: #ccc9;
+	width: fit-content;
+	padding: 0.4rem;
+	border-radius: 0.4rem;
 	
+}
+@media all and (min-width:901px){
+	section{
+		flex-direction: row;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.img{
+		width: 50%;
+	}
+	.texts{
+		display: flex;
+		gap:2rem;
+	}
+}
+@media all and (min-width:1800px){
+	.texts{
+		font-size: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
+	}
+}
 </style>
