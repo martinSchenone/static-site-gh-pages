@@ -21,7 +21,6 @@
 </section>
 <style>
 	input,
-	/* select, */
 	button {
 		appearance: none;
 		-webkit-appearance: none;
@@ -42,7 +41,6 @@
 	.search-filter {
 		display: flex;
 		align-items: center;
-		border: 1px solid;
 		width: fit-content;
 
 	}
