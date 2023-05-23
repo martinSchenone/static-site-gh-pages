@@ -1,11 +1,12 @@
 <script>
 	import CountryCard from '../components/CountryCard.svelte';
 	import Header from '../components/Header.svelte';
-	import Search from '../components/Search.svelte';
+	export let data;
+	
+	
 </script>
 
 <Header />
 <main>
-	<Search />
-	<CountryCard />
+	<CountryCard data={data}/>
 </main>
